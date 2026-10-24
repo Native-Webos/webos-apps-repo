@@ -39,6 +39,19 @@ description: |
   See the [project documentation](https://github.com/sostk/cloudstream-webos-native)
   for installation, licensing, troubleshooting and device compatibility reports.
 
+  ## Source and support
+
+  - [Source code and build instructions](https://github.com/sostk/cloudstream-webos-native).
+  - [Report a bug or playback issue](https://github.com/sostk/cloudstream-webos-native/issues/new).
+  - [Report a working or failing TV](https://github.com/sostk/cloudstream-webos-native/discussions/14).
+  - [Device reporting guide](https://github.com/sostk/cloudstream-webos-native/blob/main/docs/compatibility.md).
+
+  Please report issues as well as successful playback. Include your TV model,
+  webOS and firmware versions, app version, package variant, extension version,
+  steps to reproduce and the result of each tested operation. Attach `events.log`
+  and, when available, `runtime.log` from `/tmp/org.csweb.tv/` before rebooting.
+  Remove credentials, tokens and private stream URLs from logs and screenshots.
+
   The screenshot is a host preview from the project's 0.1 development series;
   appearance on a TV or in newer releases may differ.
 screenshots:
