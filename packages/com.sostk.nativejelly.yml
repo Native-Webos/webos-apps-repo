@@ -1,0 +1,59 @@
+title: Native Jelly
+iconUri: https://raw.githubusercontent.com/sostk/native-jelly/v0.8.0/pkg/icon160.png
+manifestUrl: https://github.com/sostk/native-jelly/releases/latest/download/com.sostk.nativejelly.manifest.json
+category: multimedia
+pool: main
+shortDescription: Unofficial native Jellyfin client for LG webOS TVs.
+requirements:
+  webosRelease: '>=4.0'
+description: |
+  Native Jelly is an unofficial native Jellyfin client for LG webOS televisions,
+  based on PlxNative. Connect to your own Jellyfin server to browse libraries,
+  search, continue watching and play media with remote-friendly navigation.
+
+  Sign in with your Jellyfin credentials or Quick Connect. Multiple users can
+  stay signed in with separate preferences. Playback supports direct play and
+  server-side remuxing/transcoding, audio and subtitle selection, resume points
+  and watched-status updates.
+
+  Native Jelly installs separately as `com.sostk.nativejelly`. It does not connect
+  to Plex servers or reuse PlxNative accounts and settings. It is independent of
+  Jellyfin, LG Electronics and the original PlxNative project.
+
+  ## Compatibility
+
+  The project targets webOS 4.0 and newer. Developer Mode installation does not
+  require root; keep the Developer Mode session active.
+
+  The release notes report playback on one LG OLED65C1PTB running webOS 6 using
+  a development build of this release with a Jellyfin 12 server. The release's
+  firmware checks cover startup libraries and symbols from platform 4.4.2 up;
+  platform 4.0 through 4.4.1 lacks firmware-image coverage. Neither startup checks
+  nor PlxNative device reports establish Native Jelly playback on other TVs.
+
+  ## Known limitations and server connections
+
+  Playback can fail through an HTTPS reverse proxy. Transcoding uses H.264;
+  Live TV is not supported. Codec, subtitle and playback compatibility depends
+  on your TV, server and media. See the release notes for current limitations.
+
+  Use your server's HTTPS address where available. An HTTP connection sends
+  credentials and sign-in tokens without encryption; the app asks for consent
+  before allowing it. Crash reports and usage analytics are opt-in; see the
+  project's privacy policy for details.
+
+  ## Source and support
+
+  - [Source code and build instructions](https://github.com/sostk/native-jelly).
+  - [Stable releases and known issues](https://github.com/sostk/native-jelly/releases/latest).
+  - [Installation and download verification](https://github.com/sostk/native-jelly/blob/main/docs/install-and-verify.md).
+  - [Report a problem or successful playback](https://github.com/sostk/native-jelly/issues/new).
+  - [Privacy policy](https://github.com/sostk/native-jelly/blob/main/PRIVACY.md).
+
+  Please report failures as well as successes. Include your TV model, webOS and
+  firmware versions, app version, Jellyfin server version, direct-play/transcode
+  mode, media codecs, reproduction steps and relevant logs. Remove passwords,
+  access tokens and private URLs before posting logs or screenshots.
+
+  This listing follows stable releases only. Native Jelly Nightly is a separate
+  application and is not included.
