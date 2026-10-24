@@ -32,8 +32,17 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install -r ./requirements.txt
 
+      - name: Test repository compatibility
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Validate registered applications
+        run: python3 -m repogen.validate_repo
+
       - name: Generate site content
         run: invoke build
+
+      - name: Verify generated feeds and site links
+        run: python3 -m repogen.verify_site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5

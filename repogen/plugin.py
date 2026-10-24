@@ -22,7 +22,7 @@ _PKGINFO_CACHE_DIR = Path(__file__).parent.parent / 'cache'
 class PackageInfoReader(BaseReader):
     enabled = True
 
-    file_extensions = ['yml', 'py']
+    file_extensions = ['yml']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -97,7 +97,6 @@ class PackageInfoReader(BaseReader):
 
 def readers_init(readers: Readers):
     readers.reader_classes['yml'] = PackageInfoReader
-    readers.reader_classes['py'] = PackageInfoReader
 
 
 def add_app_indices(generator: PagesGenerator):

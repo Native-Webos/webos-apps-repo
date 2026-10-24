@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://webosbrew.org/schema/HomebrewRepository.schema",
+  "$id": "https://native-webos.github.io/webos-apps-repo/schemas/api/PackageInfo.json",
   "title": "HomebrewPackageInfo",
   "description": "Homebrew Package Information",
   "type": "object",
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "oneOf": [
+      "anyOf": [
         {
           "required": [
             "manifestUrl"

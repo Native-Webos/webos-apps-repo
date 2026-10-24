@@ -1,4 +1,5 @@
 import html
+import hashlib
 import json.decoder
 import tarfile
 from pathlib import Path
@@ -100,8 +101,12 @@ if __name__ == '__main__':
         exit(EXIT_PACKAGE_PROBLEM)
 
     try:
-        with requests.get(ipk_url, allow_redirects=True) as resp:
+        with requests.get(ipk_url, allow_redirects=True, timeout=120) as resp:
             resp.raise_for_status()
+            expected_hash = pkginfo['manifest']['ipkHash']['sha256']
+            if hashlib.sha256(resp.content).hexdigest() != expected_hash:
+                print('IPK SHA-256 does not match the manifest')
+                exit(EXIT_PACKAGE_PROBLEM)
             try:
                 with open(args.output, 'wb') as f:
                     f.write(resp.content)
@@ -118,7 +123,7 @@ if __name__ == '__main__':
     print(f'IPK file downloaded: {args.output}', file=stderr)
 
     try:
-        _, ipk_appinfo = ipk_file.get_appinfo(args.output)
+        control, ipk_appinfo = ipk_file.get_appinfo(args.output)
     except (ArchiveError, KeyError, ValueError, tarfile.TarError, OSError) as e:
         print(' * :x: Could not read appinfo.json from the IPK: %s' % e)
         exit(EXIT_PACKAGE_PROBLEM)
@@ -128,6 +133,10 @@ if __name__ == '__main__':
     id_error = verify_ipk_id(ipk_appinfo, pkginfo['id'])
     if id_error:
         print(' * :x: %s' % id_error)
+        exit(EXIT_PACKAGE_PROBLEM)
+
+    if not (control['version'] == ipk_appinfo.get('version') == pkginfo['manifest']['version']):
+        print('IPK control, appinfo and manifest versions do not match')
         exit(EXIT_PACKAGE_PROBLEM)
 
     exit(EXIT_OK)

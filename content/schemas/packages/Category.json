@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://repo.webosbrew.org/schemas/packages/Category.json",
+  "$id": "https://native-webos.github.io/webos-apps-repo/schemas/packages/Category.json",
   "title": "PackageCategory",
   "type": "string",
   "anyOf": [

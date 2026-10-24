@@ -1,73 +1,72 @@
-# Central Repository for webOS Homebrew Project
+# Native-Webos Apps Repository
 
-## Submit Your Application
+An independent LG webOS Homebrew Channel source, adapted from
+[webosbrew/apps-repo](https://github.com/webosbrew/apps-repo). It retains upstream's
+YAML registrations, Python/Pelican generator, website and scheduled manifest refreshes.
+It is not the official webosbrew repository.
 
-Before submitting your application, please make sure it complies following basic rules:
+## Add to Homebrew Channel
 
-1. **NO AI SLOP**. Applications made primarily by AI and submitted without meaningful human development,
-   testing, and review will be rejected. AI tools may be used, but the submitter is responsible for the code and
-   must disclose that use in the pull request.
-2. **NO PIRACY**. We refuse to endorse or host any kind of information related to piracy, as well as breaking DRM
-   protected content and applications. For IPTV services **only legal IPTV services are allowed**.
-3. Be considerate to users' TV. It's not a cheap toy, so try your best not breaking it.
-4. If you are making a port to existing applications, please make sure that you are following the original project's
-   open source license.
+Open **Settings → Repositories → Add repository** and enter:
 
-To submit your application to this central repository, refer to following steps:
-
-### Fork This Repository
-
-TODO: Submit without GitHub
-
-### Add Your Application
-
-Create a file named `your-package-name.yml` in `packages`. Example:
-
-```yaml
-# Display name of your application
-title: Homebrew Channel
-# Publicly accessible HTTP/HTTPS URL, or data uri to icon image.
-iconUri: https://raw.githubusercontent.com/webosbrew/webos-homebrew-channel/main/assets/icon160.png
-# Publicly accessible manifest file of your application
-manifestUrl: https://github.com/webosbrew/webos-homebrew-channel/releases/latest/download/org.webosbrew.hbchannel.manifest.json
-# Category for your application
-category: system
-# If this is an open source application, use main, otherwise non-free
-pool: main
-# Long description for your application, in Markdown format
-description: |
-  Description in markdown format
-# Suggested: screenshots shown at the top of the app's page, in order. Each is a publicly
-# accessible HTTPS URL to the full-size image, optionally with a caption, which becomes the
-# image's alt text and tooltip rather than visible text. Leaving this out is a lint warning,
-# not an error.
-screenshots:
-  - https://example.com/main.png
-  - url: https://example.com/player.png
-    caption: Playback
-# Sponsor information, like .github/FUNDING.yml
-funding:
-  github: [ your-name ]
+```
+https://native-webos.github.io/webos-apps-repo/api/apps.json
 ```
 
-### Submit a Pull Request
+Website: https://native-webos.github.io/webos-apps-repo/
 
-We'll be reviewing and testing your application, then merge it to our main branch. Then your application will be
-available to download by other users shortly.
+The initial catalog contains no applications. Only reviewed registrations appear.
+The optional non-free pool is a separate source at
+`https://native-webos.github.io/webos-apps-repo/api/non-free/apps.json`.
 
-## Report an Inappropriate Application
+## Register an application
 
-If you find any application listed is not appropriate according to rule above,
-please [submit an issue](https://github.com/webosbrew/apps-repo/issues/new).
+1. Publish a real `.ipk` and Homebrew manifest in the application's public GitHub Releases.
+2. Add `packages/<application-id>.yml`, using the upstream registration format.
+3. Submit a pull request here. Metadata, IPK identity/version/hash and generated output are checked.
+4. After review and merge, Pages publishes the app. Scheduled builds refresh registered manifests
+   every three hours; maintainers can also run **Site: Deploy** manually.
 
-## Self-Host a Repository
+See [ADD_APP](docs/ADD_APP.md), [RELEASES](docs/RELEASES.md) and
+[CONTRIBUTING](CONTRIBUTING.md). IPKs stay in their application's Releases, rather than in Git or Pages.
+There is no organization-wide automatic app discovery. Moving manifest URLs must resolve to a
+version-specific IPK whose bytes match `ipkHash.sha256`. Never replace an existing release asset.
 
-TODO: Make this repo configurable
+## Development
 
-## Related Resources
+Python 3.11 or newer:
 
-* [webOS Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel)
-* [Documentation](https://github.com/webosbrew/docs)
-* [Unofficial webOS NDK](https://github.com/openlgtv/buildroot-nc4/)
-* [Unofficial webOS NDK (Legacy)](https://github.com/webosbrew/meta-lg-webos-ndk)
-* [openlgtv Project](https://openlgtv.github.io/)
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python -m repogen.validate_repo
+CI=true invoke build
+python -m repogen.verify_site
+```
+
+`invoke reserve` builds and serves locally at http://localhost:8000.
+`REPO_SITE_URL` overrides the production base URL when testing another deployment.
+No custom domain is configured. See [DEPLOYMENT](docs/DEPLOYMENT.md).
+
+## Compatibility and updates
+
+Use a recent Homebrew Channel release with Developer Mode support (0.7.2 or newer).
+An active Developer Mode session is required for that installation route; root-only apps
+still require root. Homebrew Channel enables Update when versions differ, so publishers must
+increase the three-part package version. There is no unattended update mechanism here.
+Refresh the browser and open the application's details to install an update.
+
+Native firmware compatibility and actual installation require TV testing; feed validation alone
+cannot establish them. See [TESTING](docs/TESTING.md) and [TROUBLESHOOTING](docs/TROUBLESHOOTING.md).
+
+## Attribution
+
+Based on upstream commit `291da2bce269fbc901a0716b645caf64f709e3dc`.
+The upstream history and Apache-2.0 [LICENSE](LICENSE) are retained. The upstream theme is reused.
+Native-Webos changes configure project-path Pages hosting, initialize an empty catalog, disable
+Python application registrations, adapt documentation and add validation. See
+[RESEARCH](docs/RESEARCH.md) and [ARCHITECTURE](docs/ARCHITECTURE.md).
+
+Report repository issues at https://github.com/Native-Webos/webos-apps-repo/issues.

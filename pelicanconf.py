@@ -11,9 +11,10 @@ from webassets.cache import MemoryCache
 import repogen
 from repogen.siteurl import siteurl
 
-AUTHOR = 'webOS Homebrew Project'
-SITENAME = 'webOS Homebrew Project'
+AUTHOR = 'Native-Webos'
+SITENAME = 'Native-Webos Apps Repository'
 SITEURL = siteurl() if os.environ.get('CI') else ''
+PACKAGES = {}
 
 THEME = 'webosbrew'
 theme_dir = Path(__file__, '..', 'theme').resolve()
@@ -30,7 +31,7 @@ WEBASSETS_CONFIG = [
 
 PATH = 'content'
 
-STATIC_PATHS = ['extra/CNAME', 'extra/favicon.ico', 'extra/llms.txt', 'schemas', 'apps/icons']
+STATIC_PATHS = ['extra/favicon.ico', 'extra/llms.txt', 'schemas', 'apps/icons']
 # App pages come from ../packages through the repogen reader. content/apps only
 # holds generated icons, so it is not a page path.
 PAGE_PATHS = ['pages', '../packages']
@@ -42,7 +43,6 @@ DIRECT_TEMPLATES = []
 
 EXTRA_PATH_METADATA = {
     'apps/icons': {'path': 'apps/icons/'},
-    'extra/CNAME': {'path': 'CNAME'},
     'extra/favicon.ico': {'path': 'favicon.ico'},
     'extra/llms.txt': {'path': 'llms.txt'},
 }
@@ -59,7 +59,7 @@ MARKDOWN = {
     'output_format': 'html5',
 }
 
-TIMEZONE = 'Asia/Tokyo'
+TIMEZONE = 'Australia/Hobart'
 
 DEFAULT_LANG = 'en'
 
@@ -73,20 +73,19 @@ CACHE_CONTENT = False
 LOAD_CONTENT_CACHE = False
 
 # Home/logo link target and top-nav items, consumed by the theme navbar.
-HOME_URL = '/'
+HOME_URL = f'{SITEURL}/'
 
 # Directory pages keep the trailing slash. GitHub Pages 301-redirects the
 # slashless form, so linking it directly saves a round trip.
 MENUITEMS = (
-    ('Apps', '/apps/'),
-    ('Develop', 'https://www.webosbrew.org/develop'),
+    ('Apps', f'{SITEURL}/apps/'),
+    ('Add repository', f'{SITEURL}/install'),
+    ('Develop', 'https://github.com/Native-Webos/webos-native-app-kit'),
 )
 
 LINKS = (
-    ('Github Organization', 'https://github.com/webosbrew/'),
-    ('Join us on Discord', 'https://discord.gg/xWqRVEm'),
-    ('RootMy.TV', 'https://rootmy.tv/'),
-    ('openlgtv', 'https://openlgtv.github.io/'),
+    ('GitHub Organization', 'https://github.com/Native-Webos/'),
+    ('Upstream repository', 'https://github.com/webosbrew/apps-repo'),
 )
 
 # Footer columns, consumed by the theme footer.
@@ -97,10 +96,10 @@ FOOTER_SECTIONS = [
     ]},
     {'title': 'Resources', 'links': [
         {'text': 'Develop', 'href': 'https://www.webosbrew.org/develop'},
-        {'text': 'Submit an App', 'href': '/submit'},
+        {'text': 'Submit an App', 'href': f'{SITEURL}/submit'},
     ]},
     {'title': 'Links', 'links': [
-        {'text': 'webosbrew', 'href': 'https://github.com/webosbrew/', 'icon': 'bi-github'},
+        {'text': 'Native-Webos', 'href': 'https://github.com/Native-Webos/', 'icon': 'bi-github'},
         {'text': 'OpenLGTV', 'href': 'https://github.com/OpenLGTV', 'icon': 'bi-github'},
         {'text': 'Discord', 'href': 'https://discord.gg/xWqRVEm', 'icon': 'bi-discord'},
     ]},
@@ -117,17 +116,10 @@ INDEX_APP_CATEGORIES = [
 
 # App IDs featured on the homepage, in display order. The blurb for each is
 # taken from the package's manifest (appDescription).
-FEATURED_APPS = [
-    'org.webosbrew.hbchannel',
-    'org.xbmc.kodi',
-    'com.limelight.webos',
-]
+FEATURED_APPS = []
 
 # Following packages will have their IPKs downloaded and hosted on the site
-HOST_PACKAGES: set[str] = {
-    'org.webosbrew.hbchannel',
-    'org.webosbrew.safeupdate'
-}
+HOST_PACKAGES: set[str] = set()
 
 DEFAULT_PAGINATION = 20
 

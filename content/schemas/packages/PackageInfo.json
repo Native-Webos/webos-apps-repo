@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://repo.webosbrew.org/schemas/packages/PackageInfo.json",
+  "$id": "https://native-webos.github.io/webos-apps-repo/schemas/packages/PackageInfo.json",
   "title": "PackageInfo",
   "type": "object",
   "properties": {

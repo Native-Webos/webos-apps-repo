@@ -152,8 +152,6 @@ def parse_registry(info_path: Path, offline: bool = False) -> tuple[str, Package
     content: PackageRegistry
     if extension == '.yml':
         pkgid, content = parse_yml_package(info_path)
-    elif extension == '.py':
-        pkgid, content = load_py_package(info_path, offline)
     else:
         raise ValueError(f'Unsupported package file `{info_path.name}` — package files must be '
                          f'named `<package id>.yml`')
@@ -217,7 +215,7 @@ def from_package_info(pkgid: str, content: PackageRegistry, offline=False) -> Pa
 
 
 def list_packages(pkgdir: Path, packages: List[str] | None = None, offline: bool = False) -> List[PackageInfo]:
-    paths: List[Path] = [f for f in pkgdir.iterdir() if f.is_file()]
+    paths: List[Path] = [f for f in pkgdir.iterdir() if f.is_file() and f.suffix == '.yml']
 
     def map_package_info(p: Path) -> PackageInfo | None:
         pkgid, content = load_registry(p, offline)

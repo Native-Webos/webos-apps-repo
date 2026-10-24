@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://repo.webosbrew.org/schemas/api/PackageManifest.schema",
+  "$id": "https://native-webos.github.io/webos-apps-repo/schemas/api/PackageManifest.json",
   "title": "PackageManifest",
   "description": "Package manifest for webOS homebrew package",
   "type": "object",

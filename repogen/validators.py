@@ -49,7 +49,7 @@ def validate(validator: Validator, instance: Any) -> None:
 
 def for_schema(rel_path: str) -> Validator:
     def schema_handler(uri: str) -> Any:
-        with schemas_dir().joinpath(urllib.parse.urlparse(uri).path.removeprefix('/schemas/')).open() as rf:
+        with schemas_dir().joinpath(urllib.parse.urlparse(uri).path.split('/schemas/', 1)[-1]).open() as rf:
             return json.load(rf)
 
     schema_path = schemas_dir().joinpath(rel_path)

@@ -8,6 +8,13 @@
 {% block main %}
 <main>
 
+<section class="container py-4">
+    <h1 class="h3">Native-Webos Apps Repository</h1>
+    <p>Add this source in Homebrew Channel → Settings → Repositories → Add repository.</p>
+    <p><a href="{{ SITEURL }}/api/apps.json"><code>{{ SITEURL }}/api/apps.json</code></a></p>
+    {% if not PACKAGES %}<p>No applications have been registered yet.</p>{% endif %}
+</section>
+
 <!-- FEATURED -->
 {% if page.metadata.featured %}
 {% set featured = page.metadata.featured %}
@@ -99,7 +106,7 @@
                     <h6 class="mb-1">Have an app idea?</h6>
                     <p class="text-body-secondary small mb-3">Missing an app you'd love on your TV? Suggest it and the
                         community can pick it up.</p>
-                    <a href="https://github.com/webosbrew/apps-repo/issues/new/choose"
+                    <a href="https://github.com/Native-Webos/webos-apps-repo/issues/new/choose"
                        class="btn btn-outline-warning mt-auto align-self-start">Suggest an idea</a>
                 </div>
             </div>

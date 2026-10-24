@@ -29,7 +29,7 @@ def fix_manifest_url(item: PackageInfo, app_dir: Path):
     with ensure_open(manifest_path, mode='w') as mf:
         json.dump(manifest, mf)
     manifest_url = manifest_path.as_posix()
-    item['manifestUrl'] = manifest_url[manifest_url.find('/api/apps'):]
+    item['manifestUrl'] = f'{siteurl()}/api/apps/{item["id"]}/manifests/{manifest["version"]}.json'
 
 
 def save_ipk(item: PackageInfo, apps_dir: Path, site_url: str):
@@ -60,7 +60,7 @@ def generate(packages: List[PackageInfo], api_dir: Path, apps_dir: Path = None, 
         package = {k: p_info[k] for k in MANIFEST_KEYS if k in p_info}
         # Prefer the manifest's appDescription, fall back to the package's shortDescription.
         package['shortDescription'] = p_info['manifest'].get('appDescription') or p_info.get(
-            'shortDescription')
+            'shortDescription', '')
         # Present only on featured packages, so clients can highlight them.
         if featured_packages and p_info['id'] in featured_packages:
             package['featured'] = True

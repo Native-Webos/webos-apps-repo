@@ -2,59 +2,16 @@ Title: Submit Application
 URL: submit
 save_as: submit.html
 status: hidden
-Description: How to submit your homebrew app to the webOS Homebrew Project repository.
+Description: Register an application with the Native-Webos repository.
 
-Before submitting your application, please make sure it complies following basic rules:
+Publish a tested IPK and matching Homebrew manifest in your app's public GitHub Releases.
+Submit a YAML registration under `packages/<application-id>.yml` through a pull request to
+[Native-Webos/webos-apps-repo](https://github.com/Native-Webos/webos-apps-repo).
 
-1. **NO PIRACY**. We refuse to endorse or host any kind of information related to priacy, as well as breaking DRM protected content and applications. For IPTV services **only legal IPTV services are allowed**.
-2. Be considerate to users' TV. It's not a cheap toy, so try your best not breaking it.
-3. If you are making a port to existing applications, please make sure that you are following original project's open source license.
+Read the [application registration guide](https://github.com/Native-Webos/webos-apps-repo/blob/main/docs/ADD_APP.md)
+for metadata, checksums and release conventions. Only approved applications appear; there are no
+sample applications in the public feed. Keep IPKs in Releases. Do not rename installed app IDs.
+Respect licences and redistribution rights. No piracy, DRM bypass or firmware modifications.
 
-To submit your application to this central repository, refer to following steps:
-
-### Fork This Repository
-
-TODO: Submit without GitHub
-
-### Add Your Application
-
-Create a file named `your-package-name.yml` in `packages`. Example:
-
-```yaml
-# Display name of your application
-title: Homebrew Channel
-# Publicly accesible HTTP/HTTPS URL, or data uri to icon image.
-iconUri: https://raw.githubusercontent.com/webosbrew/webos-homebrew-channel/main/assets/icon160.png
-# Publicly accessible manifest file of your application
-manifestUrl: https://github.com/webosbrew/webos-homebrew-channel/releases/latest/download/org.webosbrew.hbchannel.manifest.json
-# Category for your application
-category: utility
-# If this is an open source application, use main, otherwise non-free
-pool: main
-# Long description for your application, in Markdown format
-description: |
-  Description in markdown format, we suggest you to add some screenshots to help users understand
-# Sponsor information, like .github/FUNDING.yml
-funding:
-  github: [ your-name ]
-```
-
-### Submit a Pull Request
-
-We'll be reviewing and testing your application, then merge it to our main branch. Then your application will be available to download by other users shortly.
-
-## Report an Inappropriate Application
-
-If you find any application listed is not appropriate according to rule above, please [submit an issue](https://github.com/webosbrew/apps-repo/issues/new).
-
-## Self-Host a Repository
-
-TODO: Make this repo configurable
-
-## Related Resources
-
-* [webOS Homebrew Channel](https://github.com/webosbrew/webos-homebrew-channel)
-* [Documentation](https://github.com/webosbrew/docs)
-* [Unofficial webOS NDK](https://github.com/openlgtv/buildroot-nc4/)
-* [Unofficial webOS NDK (Legacy)](https://github.com/webosbrew/meta-lg-webos-ndk)
-* [openlgtv Project](https://openlgtv.github.io/)
+For repository problems, [open an issue](https://github.com/Native-Webos/webos-apps-repo/issues/new/choose).
+This independent source reuses [webosbrew/apps-repo](https://github.com/webosbrew/apps-repo).

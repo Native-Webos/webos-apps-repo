@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://repo.webosbrew.org/schemas/PackagesPage.json",
+  "$id": "https://native-webos.github.io/webos-apps-repo/schemas/api/PackagesPage.json",
   "title": "HomebrewRepository",
   "description": "Repository information for webOS homebrew packages",
   "type": "object",
@@ -10,7 +10,13 @@
       "items": {
         "$ref": "PackageInfo.json"
       }
+    },
+    "paging": {
+      "type": "object"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "required": [
+    "packages"
+  ]
 }

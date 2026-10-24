@@ -1,8 +1,5 @@
-from pathlib import Path
+import os
 
 
 def siteurl() -> str:
-    cname_file = Path(__file__).parent.parent.joinpath('content', 'extra', 'CNAME')
-    if not cname_file.exists():
-        return ''
-    return f'https://{cname_file.read_text().strip()}'
+    return os.environ.get('REPO_SITE_URL', 'https://native-webos.github.io/webos-apps-repo').rstrip('/')
