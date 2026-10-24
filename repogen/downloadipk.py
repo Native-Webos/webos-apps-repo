@@ -12,6 +12,7 @@ from jsonschema.exceptions import ValidationError
 from repogen import ipk_file, pkg_info, report
 from repogen.common import EXIT_OK, EXIT_PACKAGE_PROBLEM, EXIT_TOOL_PROBLEM
 from repogen.ipk_file import AppInfo
+from repogen.policy import require_native_type
 
 # Width of the icon preview, in pixels. It sits on the title line, so keep it near
 # the line height. App icons are 130x130.
@@ -129,6 +130,12 @@ if __name__ == '__main__':
         exit(EXIT_PACKAGE_PROBLEM)
 
     print_appinfo_table(ipk_appinfo, pkginfo['iconUri'])
+
+    try:
+        require_native_type(ipk_appinfo, 'IPK appinfo.json')
+    except ValueError as error:
+        print(f' * :x: {error}')
+        exit(EXIT_PACKAGE_PROBLEM)
 
     id_error = verify_ipk_id(ipk_appinfo, pkginfo['id'])
     if id_error:

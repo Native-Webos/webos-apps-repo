@@ -18,7 +18,7 @@ PACKAGES = {}
 
 THEME = 'webosbrew'
 theme_dir = Path(__file__, '..', 'theme').resolve()
-THEME_STATIC_PATHS = [theme_dir.joinpath('static'), pelican.themes.webosbrew.static_dir()]
+THEME_STATIC_PATHS = [pelican.themes.webosbrew.static_dir(), theme_dir.joinpath('static')]
 WEBASSETS_SOURCE_PATHS = [theme_dir.joinpath('styles'), pelican.themes.webosbrew.scss_dir()]
 THEME_TEMPLATES_OVERRIDES = ['./theme/templates']
 
@@ -80,6 +80,7 @@ HOME_URL = f'{SITEURL}/'
 MENUITEMS = (
     ('Apps', f'{SITEURL}/apps/'),
     ('Add repository', f'{SITEURL}/install'),
+    ('Submit an app', f'{SITEURL}/submit'),
     ('Develop', 'https://github.com/Native-Webos/webos-native-app-kit'),
 )
 
@@ -95,7 +96,7 @@ FOOTER_SECTIONS = [
         {'text': 'Dev Mode', 'href': 'https://www.webosbrew.org/devmode'},
     ]},
     {'title': 'Resources', 'links': [
-        {'text': 'Develop', 'href': 'https://www.webosbrew.org/develop'},
+        {'text': 'Native App Kit', 'href': 'https://github.com/Native-Webos/webos-native-app-kit'},
         {'text': 'Submit an App', 'href': f'{SITEURL}/submit'},
     ]},
     {'title': 'Links', 'links': [

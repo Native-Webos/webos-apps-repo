@@ -1,5 +1,10 @@
 # Native-Webos Apps Repository
 
+This repository accepts **native LG webOS applications only**. Both the release manifest and
+IPK `appinfo.json` must use `type: native`. Web apps and web wrappers are not accepted.
+Start building with the [Native-Webos Native App Kit](https://github.com/Native-Webos/webos-native-app-kit).
+Independently built native apps are welcome; the kit is recommended, not mandatory.
+
 An independent LG webOS Homebrew Channel source, adapted from
 [webosbrew/apps-repo](https://github.com/webosbrew/apps-repo). It retains upstream's
 YAML registrations, Python/Pelican generator, website and scheduled manifest refreshes.

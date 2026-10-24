@@ -9,6 +9,7 @@ from typing import TypedDict, List, NotRequired, Optional
 import nh3
 
 from repogen import validators
+from repogen.policy import require_native_type
 from repogen.common import url_fixup
 from repogen.pkg_manifest import obtain_manifest, PackageManifest
 from repogen.pkg_registery import PackageRequirements, PackageRegistry, parse_yml_package, load_py_package
@@ -202,11 +203,13 @@ def from_package_info(pkgid: str, content: PackageRegistry, offline=False) -> Pa
         pkginfo['requirements'] = content['requirements']
     manifest, lastmodified_r = obtain_manifest(pkgid, 'release', manifest_url, offline)
     if manifest:
+        require_native_type(manifest, 'Release manifest')
         pkginfo['manifest'] = manifest
     lastmodified_b = None
     if 'manifestUrlBeta' in content:
         manifest_b, lastmodified_b = obtain_manifest(pkgid, 'beta', url_fixup(content['manifestUrlBeta']))
         if manifest_b:
+            require_native_type(manifest_b, 'Beta manifest')
             pkginfo['manifestBeta'] = manifest_b
     lastmodified = lastmodified_r, lastmodified_b
     pkginfo['lastmodified'] = max(d for d in lastmodified if d is not None)

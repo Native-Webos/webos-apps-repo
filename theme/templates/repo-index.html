@@ -8,11 +8,29 @@
 {% block main %}
 <main>
 
-<section class="container py-4">
-    <h1 class="h3">Native-Webos Apps Repository</h1>
-    <p>Add this source in Homebrew Channel → Settings → Repositories → Add repository.</p>
-    <p><a href="{{ SITEURL }}/api/apps.json"><code>{{ SITEURL }}/api/apps.json</code></a></p>
-    {% if not PACKAGES %}<p>No applications have been registered yet.</p>{% endif %}
+<section class="home-hero container">
+  <div class="row align-items-center g-5">
+    <div class="col-lg-6">
+      <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Native webOS collection</div>
+      <h1>Native apps.<br><span>Made for your TV.</span></h1>
+      <p class="hero-description">A home for native applications on LG webOS. Discover community projects, add our source, and install through Homebrew Channel.</p>
+      <div class="d-flex flex-wrap gap-3"><a class="btn btn-primary" href="{{ SITEURL }}/apps/">Browse apps <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></a><a class="btn btn-outline-primary" href="{{ SITEURL }}/submit">Submit a native app</a></div>
+      <div class="hero-meta"><span><i class="bi bi-tv" aria-hidden="true"></i>Built for LG webOS</span><span><i class="bi bi-box-seam" aria-hidden="true"></i>Native IPK packages</span></div>
+    </div>
+    <div class="col-lg-6">
+      <div class="connect-card">
+        <div class="connect-top"><span>YOUR TV, MORE POSSIBILITIES</span><span><span class="status-dot" aria-hidden="true"></span>Homebrew Channel</span></div>
+        <div class="connect-body">
+          <div class="connect-icon"><i class="bi bi-plus-lg" aria-hidden="true"></i></div>
+          <h2>One source. Your next app.</h2>
+          <p>Open Homebrew Channel → Settings → Repositories → Add repository, then enter the URL below.</p>
+          <div class="feed-label">Repository URL</div>
+          <a class="feed-url" href="{{ SITEURL }}/api/apps.json"><code>{{ SITEURL }}/api/apps.json</code></a>
+          <div class="connect-foot">Need a hand? <a href="{{ SITEURL }}/install">View installation instructions <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FEATURED -->
@@ -62,7 +80,11 @@
 {% endif %}
 
 <!-- SHELVES -->
-<div class="container">
+<section class="catalog-section container">
+  <div class="section-heading"><div><h2>Explore the collection</h2><p>Native applications, curated by the community.</p></div><a href="{{ SITEURL }}/apps/">All apps <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+  {% if not PACKAGES %}
+  <div class="empty-catalog"><div class="empty-symbol"><i class="bi bi-box" aria-hidden="true"></i></div><div><h3>The collection starts here.</h3><p>No applications have been registered yet. Have a native app for webOS? Bring it to the collection.</p></div><a class="btn btn-outline-primary" href="{{ SITEURL }}/submit">Submit an app</a></div>
+  {% endif %}
     {% for category in page.metadata.categories %}
     {% if category.packages %}
     <section class="py-3" id="cat-{{ loop.index }}">
@@ -90,43 +112,17 @@
     </section>
     {% endif %}
     {% endfor %}
-</div>
+</section>
 
-<!-- GET INVOLVED -->
-<section class="container py-4">
-    <h5 class="mb-3">Get involved</h5>
-    <div class="row g-3">
-        <div class="col-12 col-md-6">
-            <div class="card h-100 bg-body-tertiary border">
-                <div class="card-body p-4 d-flex flex-column">
-                    <div class="cta-icon cta-icon-amber mb-3">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>
-                    </div>
-                    <h6 class="mb-1">Have an app idea?</h6>
-                    <p class="text-body-secondary small mb-3">Missing an app you'd love on your TV? Suggest it and the
-                        community can pick it up.</p>
-                    <a href="https://github.com/Native-Webos/webos-apps-repo/issues/new/choose"
-                       class="btn btn-outline-warning mt-auto align-self-start">Suggest an idea</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6">
-            <div class="card h-100 bg-body-tertiary border">
-                <div class="card-body p-4 d-flex flex-column">
-                    <div class="cta-icon mb-3">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
-                    </div>
-                    <h6 class="mb-1">Want to build one?</h6>
-                    <p class="text-body-secondary small mb-3">Everything you need to start making webOS homebrew apps —
-                        SDK, guides and API reference.</p>
-                    <a href="https://www.webosbrew.org/develop"
-                       class="btn btn-primary mt-auto align-self-start">Read the dev docs</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="developer-section container">
+  <div class="developer-card">
+    <div><div class="eyebrow"><i class="bi bi-code-slash" aria-hidden="true"></i>For developers</div><h2>Build something native.</h2><p>Start with the Native-Webos Native App Kit to build, package and verify your LG webOS application. Independently built native apps are welcome, too.</p><span class="kit-tag">Native-Webos / webos-native-app-kit</span></div>
+    <a class="btn btn-primary" href="https://github.com/Native-Webos/webos-native-app-kit">Explore the Native App Kit <i class="bi bi-arrow-up-right ms-2" aria-hidden="true"></i></a>
+  </div>
+  <div class="contribute-row">
+    <div class="contribute-card"><h3>A place for native applications.</h3><p>Submissions must be native webOS apps packaged as IPKs, with matching native app metadata. Web apps and web wrappers are not accepted.</p><a href="{{ SITEURL }}/submit">Read the submission requirements <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a></div>
+    <div class="contribute-card"><h3>Have an app idea?</h3><p>Share what you would like to see on your TV, or help improve the repository with the community.</p><a href="https://github.com/Native-Webos/webos-apps-repo/issues/new/choose">Suggest an idea <i class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i></a></div>
+  </div>
 </section>
 
 </main>

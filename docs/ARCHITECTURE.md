@@ -13,3 +13,6 @@ Failure recovery preserves the last good deployment. Every build verifies regist
 No unsupported architecture/dependency selection is advertised; compatibility is recorded and tested per app.
 The native app kit can supply packages, but the repository has no build-time dependency on it.
 See TESTING.md for automated and TV checks and RELEASES.md for update lifecycle and rollback risks.
+
+Native-only policy is enforced during manifest loading, IPK inspection and generated-feed validation.
+The shared native schema rejects other app types; website documentation explains this submission rule.

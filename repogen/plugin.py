@@ -113,7 +113,7 @@ def add_app_indices(generator: PagesGenerator):
         'title': 'Apps',
         'override_save_as': 'apps/index.html',
         'override_url': 'apps/',
-        'description': f'Browse all {len(packages)} homebrew apps for LG webOS TVs, '
+        'description': f'Browse all {len(packages)} native apps for LG webOS TVs, '
                        f'installable through the Homebrew Channel.',
         'template': 'apps',
         'status': 'hidden',
@@ -139,7 +139,7 @@ def add_app_indices(generator: PagesGenerator):
         'title': 'Apps Repository',
         'override_save_as': 'index.html',
         'override_url': '',
-        'description': 'Homebrew apps for LG webOS TVs. Install media players, games, '
+        'description': 'Native apps for LG webOS TVs. Discover independently developed '
                        'ambient light tools and utilities through the Homebrew Channel.',
         'template': 'repo-index',
         'status': 'hidden',

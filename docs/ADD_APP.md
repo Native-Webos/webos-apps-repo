@@ -1,5 +1,10 @@
 # Add an application
 
+This repository accepts **native LG webOS applications only**. Both the release manifest and
+IPK `appinfo.json` must use `type: native`. Web apps and web wrappers are not accepted.
+Start building with the [Native-Webos Native App Kit](https://github.com/Native-Webos/webos-native-app-kit).
+Independently built native apps are welcome; the kit is recommended, not mandatory.
+
 Use the existing upstream format. Each real application has one `packages/<id>.yml` registration.
 No placeholder applications are published. The following is documentation only: replace every
 example URL and ID with verified values before submitting it.

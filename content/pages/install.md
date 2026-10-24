@@ -16,6 +16,8 @@ For closed-source applications, separately add:
 https://native-webos.github.io/webos-apps-repo/api/non-free/apps.json
 ```
 
+This source accepts native applications only.
+
 Choose an app, open its details and select Install. Refresh after a release, then open the app's
 page and select Update. Homebrew Channel compares version strings for equality; this source must
 not regress package versions. Downloads are checked against the manifest's SHA-256.

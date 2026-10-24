@@ -16,14 +16,9 @@
     "type": {
       "type": "string",
       "enum": [
-        "web",
-        "stub",
-        "native",
-        "native_builtin",
-        "native_appshell",
-        "qml"
+        "native"
       ],
-      "description": "Identifies the application type. These are the same types used in appinfo.json on webOS."
+      "description": "Native-Webos accepts native applications only (appinfo.json type: native)."
     },
     "title": {
       "type": "string",

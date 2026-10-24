@@ -6,6 +6,7 @@ from urllib.parse import unquote, urljoin, urlparse
 
 from repogen import validators
 from repogen.siteurl import siteurl
+from repogen.policy import require_native_type
 
 
 class Links(HTMLParser):
@@ -26,6 +27,7 @@ def verify(output=Path('output')):
         data = json.loads(feed.read_text())
         validators.validate(validators.for_schema('api/PackagesPage.json'), data)
         for package in data['packages']:
+            require_native_type(package['manifest'], 'Generated manifest')
             ids.append(package['id'])
             assert package['id'] == package['manifest']['id'], 'Manifest ID mismatch'
             assert len(package['manifest']['ipkHash']['sha256']) == 64, 'Invalid SHA-256'
