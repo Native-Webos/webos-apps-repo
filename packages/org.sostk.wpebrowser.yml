@@ -1,0 +1,55 @@
+title: Wren
+iconUri: https://raw.githubusercontent.com/sostk/webos-wpe-browser/v0.3.2/browser/largeIcon.png
+manifestUrl: https://github.com/sostk/webos-wpe-browser/releases/latest/download/org.sostk.wpebrowser.manifest.json
+category: internet
+pool: main
+shortDescription: Native WebKit web browser for LG webOS TVs.
+requirements:
+  webosRelease: '>=5.0'
+description: |
+  Wren is a native web browser for LG webOS televisions built on WPE WebKit, so
+  modern websites open even on TVs whose built-in browser engine is too old for
+  them. It is made for the remote: the arrow keys move between links, Hold OK
+  opens quick actions, and the Magic Remote pointer works as a mouse.
+
+  Features include tabs, bookmarks, history, page zoom, YouTube's TV app,
+  hardware video decoding through LG's own media pipeline and Widevine DRM (EME)
+  through the TV's built-in CDM on supported firmware.
+
+  ## Compatibility
+
+  The reference TV is an LG OLED65C1PTB running webOS 6.5.3, where browsing,
+  hardware video and Widevine playback were tested. Users report it working on
+  webOS 5 (LG CX and NANO80). webOS 22 and newer should work but are untested.
+  Widevine works only where the TV's CDM has a version Wren supports (webOS 6,
+  22 and 23); elsewhere DRM sites report the key system as unavailable.
+
+  webOS 3.4 to 4.x (2016-2019) are supported experimentally and have not been
+  confirmed on a TV; DRM does not work there. Developer Mode installation does
+  not require root; keep the Developer Mode session active.
+
+  ## Known limitations
+
+  Widevine runs at software security level, so some services cap the quality or
+  refuse to play. Wren uses the TV's own provisioned Widevine CDM; this is
+  outside the terms LG and Google ship it under, and the TV's Widevine
+  certificate could in principle be revoked. Use at your own risk.
+
+  ## Source and support
+
+  - [Source code and build instructions](https://github.com/sostk/webos-wpe-browser).
+  - [Releases and release notes](https://github.com/sostk/webos-wpe-browser/releases/latest).
+  - [Which TVs](https://github.com/sostk/webos-wpe-browser/blob/main/docs/compatibility.md).
+  - [Report a problem or a working TV](https://github.com/sostk/webos-wpe-browser/issues/new?template=bug_report.yml).
+
+  Please report failures as well as successes, with your TV model, webOS and
+  firmware versions and Wren version. Logs: hold OK, then Settings, Help and
+  feedback, Save logs to USB. The logs list the addresses of pages you visited;
+  read them before posting them publicly.
+
+  Built with the [Native-Webos Native App Kit](https://github.com/Native-Webos/webos-native-app-kit).
+screenshots:
+  - url: https://raw.githubusercontent.com/sostk/webos-wpe-browser/v0.3.2/docs/screenshots/home.jpg
+    caption: Home page with search, shortcuts and recent pages (0.3.2 on an LG C1, webOS 6).
+  - url: https://raw.githubusercontent.com/sostk/webos-wpe-browser/v0.3.2/docs/screenshots/browsing.jpg
+    caption: Browsing with the slim toolbar above the page (0.3.2 on an LG C1, webOS 6).
