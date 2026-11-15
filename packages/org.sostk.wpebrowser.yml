@@ -50,10 +50,10 @@ description: |
   Built with the [Native-Webos Native App Kit](https://github.com/Native-Webos/webos-native-app-kit).
 screenshots:
   - url: https://raw.githubusercontent.com/sostk/webos-wpe-browser/9d7b2f49c8d97014ad41572302a7b128f7bd0b76/docs/screenshots/home.jpg
-    caption: Home page: search, shortcuts, recent pages and open tabs.
+    caption: "Home page: search, shortcuts, recent pages and open tabs."
   - url: https://raw.githubusercontent.com/sostk/webos-wpe-browser/9d7b2f49c8d97014ad41572302a7b128f7bd0b76/docs/screenshots/browsing.jpg
-    caption: Browsing: the tabs and toolbar at the top of a page.
+    caption: "Browsing: the tabs and toolbar at the top of a page."
   - url: https://raw.githubusercontent.com/sostk/webos-wpe-browser/9d7b2f49c8d97014ad41572302a7b128f7bd0b76/docs/screenshots/quick-actions.jpg
-    caption: Hold OK: quick actions and page zoom.
+    caption: "Hold OK: quick actions and page zoom."
   - url: https://raw.githubusercontent.com/sostk/webos-wpe-browser/9d7b2f49c8d97014ad41572302a7b128f7bd0b76/docs/screenshots/side-panel.jpg
-    caption: Menu: bookmarks, history, zoom and settings.
+    caption: "Menu: bookmarks, history, zoom and settings."
